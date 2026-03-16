@@ -85,19 +85,15 @@ print("\nClassification Report:\n")
 print(classification_report(y_test, pred))
 
 
-# ---------------- TEST WITH 2 MESSAGES ----------------
 
-print("\n--- Testing with 2 messages ---")
+print("\n--- Test with your messages ---")
 
-messages = [
-    "Congratulations! You won a free iPhone. Click now to claim",
-    "Hey, are we meeting tomorrow at college?"
-]
+for i in range(4):
 
-for msg in messages:
+    msg = input(f"\nEnter message {i+1}: ")
+
     vec = vectorizer.transform([msg])
 
     pred = best_model.predict(vec)
 
-    print("\nMessage:", msg)
     print("Prediction:", pred[0])

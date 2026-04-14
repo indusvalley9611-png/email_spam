@@ -1,29 +1,22 @@
 import streamlit as st
 import joblib
 
-# LOAD MODEL + VECTORIZER
+# LOAD
 model = joblib.load("spam_model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
-st.set_page_config(page_title="Spam Detector", layout="wide")
+st.title("📩 Spam Detector")
 
-st.title("📩 Email Spam Detection App")
+msg = st.text_area("Enter message")
 
-st.write("Enter a message to check if it's spam or not.")
-
-# INPUT
-message = st.text_area("Enter your message here")
-
-# BUTTON
-if st.button("Check Spam", use_container_width=True):
-
-    if message.strip() == "":
-        st.warning("Please enter a message")
+if st.button("Predict"):
+    if msg.strip() == "":
+        st.warning("Enter message")
     else:
-        vec = vectorizer.transform([message])
-        prediction = model.predict(vec)[0]
+        vec = vectorizer.transform([msg])
+        pred = model.predict(vec)[0]
 
-        if prediction.lower() == "spam":
-            st.error("🚫 This is SPAM")
+        if pred == "spam":
+            st.error("🚫 Spam")
         else:
-            st.success("✅ This is NOT Spam")
+            st.success("✅ Not Spam")

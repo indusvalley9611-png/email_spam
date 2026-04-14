@@ -84,6 +84,12 @@ pred = best_model.predict(X_test_vec)
 print("\nClassification Report:\n")
 print(classification_report(y_test, pred))
 
+# SAVE
+joblib.dump(best_model, "spam_model.pkl")
+joblib.dump(vectorizer, "vectorizer.pkl")
+
+print("\nSaved model and vectorizer!")
+
 
 
 # print("\n--- Test with your messages ---")

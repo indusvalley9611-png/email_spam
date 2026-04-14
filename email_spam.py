@@ -86,14 +86,14 @@ print(classification_report(y_test, pred))
 
 
 
-print("\n--- Test with your messages ---")
+# print("\n--- Test with your messages ---")
 
-for i in range(4):
+# for i in range(4):
 
-    msg = input(f"\nEnter message {i+1}: ")
+#     msg = input(f"\nEnter message {i+1}: ")
 
-    vec = vectorizer.transform([msg])
+#     vec = vectorizer.transform([msg])
 
-    pred = best_model.predict(vec)
+#     pred = best_model.predict(vec)
 
-    print("Prediction:", pred[0])
+#     print("Prediction:", pred[0])
